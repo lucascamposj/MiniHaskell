@@ -10,6 +10,4 @@ class ExpressaoSomaTeste extends FlatSpec with Matchers {
     val soma = new ExpressaoSoma(new ValorInteiro(3), new ValorInteiro(4));
     soma.avaliar().asInstanceOf[ValorInteiro].valor should be (7);
   }
-  
-  
 }

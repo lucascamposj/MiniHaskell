@@ -17,7 +17,7 @@ import br.unb.cic.mhs.ast.Expressao
 class ExpressaoAplicacaoTest extends FlatSpec with Matchers {
   
   "uma aplicacao inc 4 (onde existe inc x = x + 1) " should " levar ao valor 5" in {
-    val inc = new DecFuncao("inc", List("x"), new ExpressaoSoma(new Referencia("x"), new ValorInteiro(1)))  
+    val inc = new DecFuncao("inc", List("x"), new ExpressaoSoma(new Referencia("x"), new ValorInteiro(1)))
     val app = new Aplicacao("inc", new ValorInteiro(4))
     
     AmbienteDecFuncao.associar("inc", inc)
@@ -35,5 +35,23 @@ class ExpressaoAplicacaoTest extends FlatSpec with Matchers {
     
     let.avaliar().asInstanceOf[ValorInteiro].valor should be (15)
   }
-  
+
+  "uma aplicacao inc 4,6 (onde existe inc x = x + y) " should " levar ao valor 10" in {
+    val inc = new DecFuncao("inc", List("x","y"), new ExpressaoSoma(new Referencia("x"), new Referencia("y")))
+    val app = new Aplicacao("inc", new ValorInteiro(4), new ValorInteiro(6))
+
+    AmbienteDecFuncao.associar("inc", inc)
+
+    app.avaliar().asInstanceOf[ValorInteiro].valor should be (10)
+  }
+
+  "uma aplicacao inc 4,6 (onde existe inc x = x + y, y = y + y ) " should " levar ao valor 10" in {
+    val inc = new DecFuncao("inc", List("x","y"), new ExpressaoSoma(new Referencia("x"), new Referencia("y")))
+    val app = new Aplicacao("inc", new ValorInteiro(4), new ValorInteiro(6))
+
+    AmbienteDecFuncao.associar("inc", inc)
+
+    app.avaliar().asInstanceOf[ValorInteiro].valor should be (10)
+  }
+
 }

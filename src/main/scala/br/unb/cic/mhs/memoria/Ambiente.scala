@@ -16,7 +16,8 @@ class Ambiente[T] {
    * Associa um id a uma expressao
    */
   def associar(id : String, exp : T) {
-    contexto += id -> exp
+      contexto += id  -> exp
+
   }
   
   /**

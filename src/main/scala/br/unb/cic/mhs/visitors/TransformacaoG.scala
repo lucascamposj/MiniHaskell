@@ -1,14 +1,6 @@
 package br.unb.cic.mhs.visitors
 
-import br.unb.cic.mhs.ast.ValorBooleano
-import br.unb.cic.mhs.ast.ValorInteiro
-import br.unb.cic.mhs.ast.ExpressaoSoma
-import br.unb.cic.mhs.ast.ExpressaoITE
-import br.unb.cic.mhs.ast.Aplicacao
-import br.unb.cic.mhs.ast.ExpressaoLet
-import br.unb.cic.mhs.ast.Referencia
-import br.unb.cic.mhs.ast.Expressao
-import br.unb.cic.mhs.ast.ExpressaoSoma
+import br.unb.cic.mhs.ast._
 
 /**
  * Classe abstrata com a implementacao de um MHSVisitor 
@@ -24,4 +16,5 @@ trait TransformacaoG extends MHSVisitor[Expressao] {
   override def visitar(e : Aplicacao)       : Expressao = new Aplicacao(e.nome, e.args.map(exp => exp.aceitar(this)) : _*)
   override def visitar(e : ExpressaoLet)    : Expressao = new ExpressaoLet(e.id, e.expNomeada.aceitar(this), e.corpo.aceitar(this))
   override def visitar(e : Referencia)      : Expressao = e
+  override def visitar(e:  ExpressaoBinaria) : Expressao = new ExpressaoBinaria(e.lhs.aceitar(this),e.rhs.aceitar(this))
 }

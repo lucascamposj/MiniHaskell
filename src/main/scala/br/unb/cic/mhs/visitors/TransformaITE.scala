@@ -10,6 +10,7 @@ import br.unb.cic.mhs.ast.ExpressaoLet
 import br.unb.cic.mhs.ast.Referencia
 
 class TransformaITE extends TransformacaoG {
+
   override def visitar(e : ExpressaoITE)  = {
     val condicao = e.condicao.aceitar(this)
     val tupla = (e.clausulaThen, e.clausulaElse)
@@ -18,4 +19,5 @@ class TransformaITE extends TransformacaoG {
       case _ => new ExpressaoITE(condicao, e.clausulaThen.aceitar(this), e.clausulaElse.aceitar(this))
     }
   }
+
 }

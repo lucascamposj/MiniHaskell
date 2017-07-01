@@ -9,6 +9,7 @@ import br.unb.cic.mhs.ast.Referencia
 import br.unb.cic.mhs.ast.ExpressaoLet
 import br.unb.cic.mhs.ast.Referencia
 import br.unb.cic.mhs.ast.ExpressaoLet
+import br.unb.cic.mhs.visitors.{MHSVisitor, TransformacaoG}
 
 /*
  * Classe de teste para expressoes do tipo Let

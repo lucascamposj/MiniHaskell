@@ -4,7 +4,7 @@ import br.unb.cic.mhs.visitors.MHSVisitor
 
 abstract class ValorConcreto[T](val valor : T) extends Valor {
   override def avaliar() : Valor = this
- }
+}
 
 case class ValorInteiro(v : Int) extends ValorConcreto[Int](v) {
   override def verificarTipo() : Tipo = TInteiro 

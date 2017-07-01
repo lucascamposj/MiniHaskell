@@ -12,15 +12,23 @@ import br.unb.cic.mhs.visitors.MHSVisitor
 class ExpressaoLet(val id : String , val expNomeada: Expressao , val corpo: Expressao) extends Expressao {
   
   override def avaliar() : Valor = {
-    AmbienteExpressao.associar(id, expNomeada)
-    return corpo.avaliar()
+    var actualExp : Expressao = null
+    try{
+      actualExp = AmbienteExpressao.pesquisar(id)
+      AmbienteExpressao.associar(id, expNomeada)
+    }catch{
+      case e : java.util.NoSuchElementException => AmbienteExpressao.associar(id, expNomeada)
+    }
+
+    val c =  corpo.avaliar()
+    AmbienteExpressao.associar(id, actualExp)
+    return c
   }
   
   override def verificarTipo : Tipo = 
-    if(expNomeada.verificarTipo().equals(TErro)) 
+    if(expNomeada.verificarTipo().equals(TErro))
       TErro
     else  corpo.verificarTipo()
-  
+
   override def aceitar[T](visitor : MHSVisitor[T]) : T = visitor.visitar(this)
- 
 }

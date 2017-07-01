@@ -7,7 +7,7 @@ import br.unb.cic.mhs.visitors.MHSVisitor
 class Aplicacao (val nome: String, val args: Expressao*) extends Expressao{
   override def avaliar(): Valor = {
     val funcao = AmbienteDecFuncao.pesquisar(nome)
-    for(i <- 0 until funcao.args.size){
+    for(i <- funcao.args.indices){
       AmbienteExpressao.associar(funcao.args(i), args(i))
     }
     funcao.corpo.avaliar()

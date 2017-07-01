@@ -9,7 +9,7 @@ class ExpressaoSoma(lhs : Expressao, rhs : Expressao) extends ExpressaoBinaria(l
     val v1 = lhs.avaliar().asInstanceOf[ValorInteiro]
     val v2 = rhs.avaliar().asInstanceOf[ValorInteiro]
       
-    return new ValorInteiro(v1.valor + v2.valor); 
+    return new ValorInteiro(v1.valor + v2.valor)
   }
   
   override def verificarTipo : Tipo = {
