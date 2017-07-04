@@ -7,6 +7,7 @@ class Tipo
 case object TInteiro extends Tipo 
 case object TBooleano extends Tipo 
 case object TErro extends Tipo
+//case object TFuncao extends Tipo
 
 trait Expressao {
   def avaliar() : Valor

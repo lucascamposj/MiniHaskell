@@ -14,5 +14,11 @@ case class ValorInteiro(v : Int) extends ValorConcreto[Int](v) {
 case class ValorBooleano(v : Boolean) extends ValorConcreto[Boolean](v) {
   override def verificarTipo() : Tipo = TBooleano
   override def aceitar[T](visitor : MHSVisitor[T]) : T = visitor.visitar(this)
-
 }
+
+/*case class ValorFuncao(arg : Expressao, corpo : Expressao) extends ValorConcreto[Expressao](arg, corpo) {
+  override def verificarTipo(): Tipo = TFuncao
+  override def aceitar[T](visitor: MHSVisitor[T]): T = visitor.visitar(this)
+}*/
+
+

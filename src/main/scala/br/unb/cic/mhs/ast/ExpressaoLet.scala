@@ -9,7 +9,7 @@ import br.unb.cic.mhs.visitors.MHSVisitor
  * Permite escrever algo como let x = 10 in x + 1, o que levaria 
  * ao valor 11. 
  */
-class ExpressaoLet(val id : String , val expNomeada: Expressao , val corpo: Expressao) extends Expressao {
+class ExpressaoLet(val id : String , val expNomeada: Expressao, val corpo: Expressao) extends Expressao {
   
   override def avaliar() : Valor = {
     var actualExp : Expressao = null

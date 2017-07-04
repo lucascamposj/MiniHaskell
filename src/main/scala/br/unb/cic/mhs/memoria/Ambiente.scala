@@ -1,7 +1,8 @@
 package br.unb.cic.mhs.memoria
 
 import scala.collection.mutable.HashMap
-import br.unb.cic.mhs.ast.{Expressao, DecFuncao}
+import br.unb.cic.mhs.ast.{DecFuncao, Expressao, ExpressaoLambda}
+
 import scala.collection.mutable.HashSet
 
 /**
@@ -30,3 +31,5 @@ class Ambiente[T] {
 object AmbienteExpressao extends Ambiente[Expressao] 
 
 object AmbienteDecFuncao extends Ambiente[DecFuncao]
+
+object AmbienteExpressaoLambda extends Ambiente[Expressao]
