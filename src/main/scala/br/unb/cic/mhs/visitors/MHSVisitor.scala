@@ -10,7 +10,7 @@ import br.unb.cic.mhs.ast._
 trait MHSVisitor[+T] {
   def visitar(e : ValorInteiro)     : T
   def visitar(e : ValorBooleano)    : T
-  def visitar(e : ExpressaoLambda)  : T
+  def visitar(e : DecLambda)  : T
   def visitar(e : ExpressaoBinaria) : T
   def visitar(e : ExpressaoSoma)    : T
   def visitar(e : ExpressaoITE)     : T
@@ -19,4 +19,10 @@ trait MHSVisitor[+T] {
   def visitar(e : ExpressaoLet)     : T
   def visitar(e : Referencia)       : T
   def visitar(e : ReferenciaLambda) : T
+  def visitar(e : ExpressaoFatorial): T
+  def visitar(e : ExpressaoNegativa): T
+  def visitar(e : ExpressaoDiferenca): T
+  def visitar(e : ExpressaoIgualdade) : T
+  def visitar(e : ExpressaoMaiorQue) : T
+  def visitar(e : ExpressaoMenorQue): T
 }

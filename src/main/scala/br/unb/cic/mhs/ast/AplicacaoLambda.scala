@@ -8,13 +8,11 @@ import br.unb.cic.mhs.visitors.MHSVisitor
   */
 class AplicacaoLambda(val expLambda : Expressao, val valor : Expressao) extends Expressao{
     override def avaliar(): Valor = {
-        val lambda = expLambda.avaliar().asInstanceOf[ExpressaoLambda]
+        val lambda = expLambda.avaliar().asInstanceOf[DecLambda]
 
-        AmbienteExpressaoLambda.associar(lambda.arg,valor)
+        AmbienteExpressaoLambda.associar(lambda.arg, valor)
         lambda.corpo.avaliar()
     }
-
-    override def verificarTipo(): Tipo = TErro
 
     override def aceitar[T](visitor: MHSVisitor[T]): T = visitor.visitar(this)
 }

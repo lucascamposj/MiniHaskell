@@ -5,6 +5,7 @@ import br.unb.cic.mhs.memoria.AmbienteExpressao
 import br.unb.cic.mhs.visitors.MHSVisitor
 
 class Aplicacao (val nome: String, val args: Expressao*) extends Expressao{
+
   override def avaliar(): Valor = {
     val funcao = AmbienteDecFuncao.pesquisar(nome)
     for(i <- funcao.args.indices){
@@ -12,8 +13,6 @@ class Aplicacao (val nome: String, val args: Expressao*) extends Expressao{
     }
     funcao.corpo.avaliar()
   }
-  
-  override def verificarTipo() : Tipo = TErro
   
   override def aceitar[T](visitor : MHSVisitor[T]) : T =  visitor.visitar(this)
 

@@ -13,11 +13,7 @@ class ExpressaoITE(val condicao: Expressao, val clausulaThen: Expressao, val cla
       clausulaThen.avaliar()
    else clausulaElse.avaliar() 
   
-  override def verificarTipo() : Tipo = 
-    if(condicao.verificarTipo() == TBooleano && clausulaThen.verificarTipo() == clausulaElse.verificarTipo())
-      clausulaThen.verificarTipo()
-    else
-      TErro
+
       
    override def aceitar[T](visitor : MHSVisitor[T]) : T =  visitor.visitar(this)
  

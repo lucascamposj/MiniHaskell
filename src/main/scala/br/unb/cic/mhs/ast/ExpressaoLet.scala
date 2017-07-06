@@ -1,6 +1,5 @@
 package br.unb.cic.mhs.ast
 
-import br.unb.cic.mhs.memoria.Ambiente
 import br.unb.cic.mhs.memoria.AmbienteExpressao
 import br.unb.cic.mhs.visitors.MHSVisitor
 
@@ -22,13 +21,9 @@ class ExpressaoLet(val id : String , val expNomeada: Expressao, val corpo: Expre
 
     val c =  corpo.avaliar()
     AmbienteExpressao.associar(id, actualExp)
-    return c
+
+    c
   }
-  
-  override def verificarTipo : Tipo = 
-    if(expNomeada.verificarTipo().equals(TErro))
-      TErro
-    else  corpo.verificarTipo()
 
   override def aceitar[T](visitor : MHSVisitor[T]) : T = visitor.visitar(this)
 }

@@ -15,8 +15,7 @@ import br.unb.cic.mhs.visitors.{MHSVisitor, TransformacaoG}
  * Classe de teste para expressoes do tipo Let
  */
 class ExpressaoLetTeste extends FlatSpec with Matchers {
-  
-  //esse teste deve estar funcionando.
+
   "uma expressao let x = 3 in x + 1" should "levar ao valor 4" in {
     //val let = MHSParser.parse("let x = 3 in x + 1")
     val let = new ExpressaoLet("x",new ValorInteiro(3), 
@@ -26,8 +25,7 @@ class ExpressaoLetTeste extends FlatSpec with Matchers {
     let.avaliar().asInstanceOf[ValorInteiro].valor should be (4)
     
   }
-  
-  //esse teste deve estar funcionando. 
+
   "uma expressao let x = 3 in y = 5 in x + y" should "levar ao valor 8" in{
     val val3 = new ValorInteiro(3)
     val val5 = new ValorInteiro(5)
@@ -38,8 +36,7 @@ class ExpressaoLetTeste extends FlatSpec with Matchers {
     
     let2.avaliar().asInstanceOf[ValorInteiro].valor should be (8)
   }
-  
-  //esse caso de teste esta quebrado. Tarefa: fazer esse teste passar.
+
   "uma expressao let x = 3 in (let x = 5 in x + 1) + x" should "levar ao valor 9" in {
      val val1 = new ValorInteiro(1) 
      val val3 = new ValorInteiro(3)

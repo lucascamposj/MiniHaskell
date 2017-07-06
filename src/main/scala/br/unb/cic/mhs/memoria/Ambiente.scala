@@ -1,7 +1,7 @@
 package br.unb.cic.mhs.memoria
 
 import scala.collection.mutable.HashMap
-import br.unb.cic.mhs.ast.{DecFuncao, Expressao, ExpressaoLambda}
+import br.unb.cic.mhs.ast.{DecFuncao, Expressao, DecLambda}
 
 import scala.collection.mutable.HashSet
 
